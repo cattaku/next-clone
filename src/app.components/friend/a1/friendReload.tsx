@@ -39,7 +39,7 @@ const  StyledWrapper = styled.div`
   .btn-reload {
     font-size: 20px;
     color: #ffff;
-    border-radius: 20px;
+    border-radius: 25px;
     padding: 5px 15px 5px 15px;
     font-weight: 20px;
     text-align: center;

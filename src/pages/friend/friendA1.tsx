@@ -8,17 +8,12 @@ import FriendList from '../../app.components/friend/a1/friendList';
 const Page_FriendA1 = () => {
 
   return (
-
       <StyledWrapper>
         <UserInfo />
         <TopBanner />
         <FriendList />
       </StyledWrapper>
-
-    
-
   )
-
 }
 
 export default Page_FriendA1;

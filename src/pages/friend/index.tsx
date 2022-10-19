@@ -1,31 +1,35 @@
 import { NextPage } from 'next';
-import Page_FriendA1 from './friendA1';
+import  Page_FriendA1 from './friendA1';
+import  Page_FriendA2 from './friendA2';
+import  Page_FriendA3 from './friendA3';
 import styled from 'styled-components';
+import { useState } from 'react';
+
 
 
 const Page_FriendIndex: NextPage = () => {
-
-  const handleChange = (key:string) => {
-
+  const menuTitle = ['랭킹', '친구초대', '받은요청']
+  const tab = { 0: <Page_FriendA1 />, 1: <Page_FriendA2 />, 2: <Page_FriendA3 /> }
+  const [activeTab, setActiveTab] = useState(0)
+  const handleTab = (idx:number) => {
+    setActiveTab(idx)
   }
+
   return (
     <StyledWrapper> 
       <div className='tabs'>
-        <div className='tab-menu' >
-          <a href='/'>랭킹</a>
-        </div>
-    
-     
-        <div className='tab-menu'>
-          <a href='/'>친구초대</a>
-        </div>
-   
-  
-        <div className='tab-menu'>
-          <a href='/'>받은요청</a>
-        </div>
+        {menuTitle.map((title, idx) => {
+          return (
+            <div className='tab-menu'>
+              <span key={idx} onClick={() => handleTab(idx)}> {title} </span>
+            </div>
+            
+          )
+        })}
       </div>
-      <Page_FriendA1 />  
+      <div>
+        {tab[activeTab]}
+      </div>
     </StyledWrapper>
    
   )
@@ -35,14 +39,6 @@ export default Page_FriendIndex
 
 const StyledWrapper = styled.div`
   width: 100vw;
-  a {
-    text-decoration: none;
-    color: #868484;
-    touch-action: bl;
-  }
-  a:active { 
-    color: black
-  }
 
   .tab-menu {
     float: left;
@@ -51,5 +47,7 @@ const StyledWrapper = styled.div`
     text-align: center;
     font-size: 18px;
     padding: 20px 0 20px 0;
+    color: #868484;
+    border-bottom: solid 0.1rem #d6d6d6;
   }
 `

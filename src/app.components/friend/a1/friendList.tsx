@@ -29,7 +29,7 @@ const FriendList= () => {
     <StyledWrapper>
       <div style={{backgroundColor: '#f4f2f2'}}>
       <ul>
-        <li className='friend-intro'>지금 친구신청이 가능한 친구를 소개합니다. </li>
+        <li className='friend-intro'>지금 친구신청이 가능한 친구를 소개합니다 </li>
         <li className="btn-reload"><button><img src=''></img></button></li>
       </ul>
       </div>
@@ -46,7 +46,7 @@ const FriendList= () => {
               <td id="user-width">
                 {user.width} 걸음
               </td>
-              <td className="friend-add">
+              <td id="friend-add">
                 <button className="">친구추가</button>
               </td>
             </tr>
@@ -60,6 +60,7 @@ const FriendList= () => {
 export default FriendList
 
 const  StyledWrapper = styled.div`
+  width: 100wv;
   height: auto;
   color: #9b999a;
 
@@ -92,22 +93,23 @@ const  StyledWrapper = styled.div`
     #user-name {
       font-weight: bold;
       font-size: 14px;
-      width: 40%;
+      width: 50%;
       line-height: 40px;
     }
     #user-width {
       font-size: 12px;
-
       width: 20%;
     }
     #friend-add {
-      width: 20%;
+      width: 18%;
       button {
-        color: white; background-color: #98e3fc;
-        border: solid 1px #98e3fc;
+        color: #36333e; 
+        background-color: #f5f067;
+        border: solid 1px #f5f067;
         border-radius: 20px;
         padding: 5px;
-        font-weight: 20px;
+        font-size: 12px;
+        font-weight: 10px;
         text-align: center;
       } 
     }
