@@ -2,24 +2,26 @@ import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import { API_URL } from '../../../pages/api/config'
 import FriendReload from "./friendReload";
+import { ReloadOutlined } from "@ant-design/icons";
 
 
 const FriendList= () => {
-  const [ UserList, setUserList ] = useState([]) 
+  const [ userList, setUserList ] = useState([]) 
 
   useEffect(() => {
-    let userList = `${API_URL}/list?page=2&limit=10`
-    
-    fetch(userList).then(result => result.json())
+    let userData = `${API_URL}/list?page=2&limit=15`
+    fetch(userData).then(result => result.json())
     .then(result => {
       setUserList(result)
-      
-      if(!result) console.log('리스트가 없다')
     })
   }, [])
 
+  const handleReload= () => {
+    location.reload();
+  }
 
-  if (UserList.length == 0) {
+
+  if (userList.length == 0 && !userList) {
    return (
     <FriendReload />
    ) 
@@ -27,30 +29,37 @@ const FriendList= () => {
 
   return (
     <StyledWrapper>
-      <div style={{backgroundColor: '#f4f2f2'}}>
-      <ul>
-        <li className='friend-intro'>지금 친구신청이 가능한 친구를 소개합니다 </li>
-        <li className="btn-reload"><button><img src=''></img></button></li>
+      <ul className="reload">
+          <li id='friend-intro'>
+           지금 친구신청이 가능한 친구를 소개합니다
+          </li>
+          <li id="btn-reload">
+            <ReloadOutlined onClick={handleReload} />
+          </li>
       </ul>
-      </div>
-      <div className='friends'>
-        {UserList && UserList.map((user, index) => (
-          <React.Fragment key = {index}>
-            <tr>
-              <td>
+
+      <div className='friends-gruop'>
+        {userList && userList.map((user, index) => (
+          <React.Fragment key = {index} >
+            <ul className="friends">
+              <li id='friend-img'>
                 <img src='/images/logo/user_m.png' style={{width:'80%'}} />
-              </td>
-              <td id="user-name">
+              </li>
+              <li id="user-name">
                 {user.author}
-              </td>
-              <td id="user-width">
+              </li>
+              <li id="user-width">
                 {user.width} 걸음
-              </td>
-              <td id="friend-add">
+              </li>
+              <li id="friend-add">
                 <button className="">친구추가</button>
-              </td>
-            </tr>
+              </li> 
+            </ul>
+
+
+
           </React.Fragment>
+        
         ))}
       </div>
     </StyledWrapper>
@@ -63,45 +72,55 @@ const  StyledWrapper = styled.div`
   width: 100wv;
   height: auto;
   color: #9b999a;
-
-  .friend-intro {
+ 
+  .reload {
+    width: 100%;
+    height: auto;
+    background-color: #f1eff0;
+    padding: 7px 0 7px 0;
+    justify-content: space-between;
+    #friend-intro {
     display: inline;
-    justify-content: flex-start;
     width: 70%;
     padding-left: 20px;
-    line-height: 40px;
-    font-size: 14px;
+    font-size: 12px;
     color: #686666;
-  }
-  .btn-reload {
+    line-height: 40%
+    }
+    #btn-reload {
     display: inline;
-    justify-content: flex-end;
-    width: 30%;
+    margin-left: 33%;
+    padding-right: 20px;
+    }
+  }
+  .friends-gruop {
+    padding: 10px 0 10px 0;
   }
   .friends {
-    padding: 10px 20px 10px 20px;
-    display: block;
-    td {
-      height: auto;
+    display: flex;
+    padding-top: 7px;
+    padding-left: 20px;
+    div {
       font-size: 16px;
     }
     #friend-img {
-      display: flex;
-      width: 20%;
-      align-items: center;
+      width: 12%;  
     }
     #user-name {
       font-weight: bold;
       font-size: 14px;
-      width: 50%;
-      line-height: 40px;
+      width: 46%;
+      line-height: 40px;  
+      margin-left: 2px;
     }
     #user-width {
+      width: 22%;
       font-size: 12px;
-      width: 20%;
+      line-height: 40px;  
     }
     #friend-add {
-      width: 18%;
+      width: 20%;
+      line-height: 40px;  
       button {
         color: #36333e; 
         background-color: #f5f067;

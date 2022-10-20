@@ -1,19 +1,14 @@
 import React from "react";
 import styled from 'styled-components';
-import { UserOutlined } from '@ant-design/icons';
-import { userInfo } from "os";
 
 const UserInfo = () => {
-  
-
   return (
-
     <StyledWrapper>
       <div className="rank-1">
         <p> 1 </p>
       </div>
       <div className="rank-2">
-        <img src="/images/logo/user_m.png" style={{width:'120%'}}/>
+        <img src="/images/logo/user_m.png" style={{width:'100%'}}/>
       </div>
       <div className="rank-3">
         <ul>
@@ -24,24 +19,20 @@ const UserInfo = () => {
             #Dd
           </li>
           <li>
-          <progress value="0" max="100"></progress>
+          <progress value="0" max="100" />
           </li>
         </ul>
-      
       </div>
       <div className="rank-4"> 
         <p> 0걸음 </p>
       </div>
-    </StyledWrapper>
-
-    
+    </StyledWrapper>    
   )
 }
 
 export default UserInfo;
 
 const StyledWrapper = styled.div`
-  width: 100vw; 
   height: auto;
   display: flex;
   padding: 10px 20px 10px 20px;
@@ -50,6 +41,7 @@ const StyledWrapper = styled.div`
   
 
   .rank-1 {
+    color: #3b3b3b;
     font-size: 18px;
     font-weight: bold;
     float: left;
@@ -75,8 +67,9 @@ const StyledWrapper = styled.div`
     ul {
       list-style: none;
     }
-    #userInfo {
+    #user-info {
       font-size: 16px;
+      color: #3b3b3b;
     }
   }
   .rank-4 {

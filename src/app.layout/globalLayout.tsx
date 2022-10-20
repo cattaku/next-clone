@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import AppIndex from "../pages";
 
 export const GlobalsLayout = () => {
-
   return (
     <StyledLayout>
       <AppIndex />
